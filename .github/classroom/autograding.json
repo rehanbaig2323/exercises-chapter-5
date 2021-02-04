@@ -2,7 +2,7 @@
   "tests": [
     {
       "name": "setup",
-      "setup": "sudo -H pip3 install setuptools pytest pytest-timeout flake8",
+      "setup": "sudo -H pip3 install setuptools pytest pytest-timeout flake8 pep8-naming flake8-docstrings",
       "run": "python3 -m pip install numpy",
       "input": "",
       "output": "",
@@ -44,6 +44,16 @@
       "name": "exercise-5-6",
       "setup": "",
       "run": "pytest tests/test_exercise_5_6.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "flake8-test",
+      "setup": "",
+      "run": "python3 -m flake8 adt_examples/",
       "input": "",
       "output": "",
       "comparison": "included",
