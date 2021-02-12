@@ -1,4 +1,5 @@
 import pytest
+import math
 try:
     from adt_examples.rpcalc import RPCalc
 except ImportError:
@@ -81,5 +82,5 @@ def test_calculator_arithmetic(expression, answer):
     calc = RPCalc()
     for element in expression:
         calc.push(element)
-    assert calc.peek() == answer, \
+    assert math.isclose(calc.peek(), answer, rel_tol=1.e-5), \
         f"expected an answer of {answer}"
