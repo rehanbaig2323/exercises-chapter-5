@@ -49,9 +49,8 @@ def test_appendleft():
     Q = Deque(3)
     Q.append(2)
     Q.append(4)
-    Q.append(6)
     Q.appendleft(0)
-    assert Q.peek() == 0, \
+    assert Q.peekleft() == 0, \
         "expected value of 0"
 
 
