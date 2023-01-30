@@ -2,7 +2,7 @@
   "tests": [
     {
       "name": "setup",
-      "setup": "python -m pip3 install -u pip",
+      "setup": "python -m pip install -u pip",
       "run": "python3 -m pip install numpy setuptools pytest pytest-timeout flake8 pep8-naming flake8-docstrings",
       "input": "",
       "output": "",
