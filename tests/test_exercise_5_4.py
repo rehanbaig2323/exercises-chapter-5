@@ -34,7 +34,7 @@ def test_fib_values(n, fib_lst):
         "fibonacci sequences are not what is expected"
 
 
-@pytest.mark.timeout(30e0, method='signal')
+@pytest.mark.timeout(30)
 @pytest.mark.parametrize("size,", [
     (1e7),
     (1e11),
