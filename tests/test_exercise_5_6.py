@@ -118,6 +118,17 @@ def test_pointers(idx, iterated, base_data):
     assert np.array_equal([q for q in Q], iterated)
 
 
+@pytest.mark.parametrize("idx, iterated", [
+    (0, [15, 20, 25, 35, 40]),
+    (1, ['n+3', 'n+2', 'n', 'n+4'])
+])
+def test_double_iterate(idx, iterated, base_data):
+    Q = base_data[idx]
+    assert np.array_equal([(q, r) for q in Q for r in Q],
+                          [(q, r) for q in iterated for r in iterated])
+
+
+
 def test_mem_leakage():
     Q = Deque(2)
     Q.append(1)
