@@ -6,6 +6,15 @@ except ImportError:
     pass
 
 
+def test_pytest_timeout_import():
+    try:
+        import pytest_timeout
+    except ImportError:
+        raise ImportError(
+            "Failed to import pytest_timeout. Try: "
+            "python -m pip install pytest-timeout")
+
+
 def test_fib_import():
     from adt_examples.fibonacci import Fib
 
