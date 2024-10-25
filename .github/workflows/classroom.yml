@@ -81,4 +81,4 @@ jobs:
       name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       with:
-        runners: exercise54, exercise55
+        runners: exercise54,exercise55
