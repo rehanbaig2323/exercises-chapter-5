@@ -72,7 +72,7 @@ jobs:
         test-name: flake8-test
         timeout: 1
     - env:
-        EXERCISE-5-4: ${{steps.exercise-5-4.outputs.result}}
+        EXERCISE54: ${{steps.exercise-5-4.outputs.result}}
         EXERCISE-5-5: ${{steps.exercise-5-5.outputs.result}}
         EXERCISE-5-6: ${{steps.exercise-5-6.outputs.result}}
         FLAKE8-TEST: ${{steps.flake8-test.outputs.result}}
@@ -81,4 +81,4 @@ jobs:
       name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       with:
-        runners: exercise-5-4
+        runners: exercise54
