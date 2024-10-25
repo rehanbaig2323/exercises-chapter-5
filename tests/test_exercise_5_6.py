@@ -7,6 +7,51 @@ import sys
 import numpy as np
 
 
+class StaticList(list):
+    """A list object whose length cannot be changed once it is created."""
+
+    def append(self, object, /):
+        raise TypeError(
+            "The list underpinning your Deque should be fixed length. "
+            "Calling the append method is not allowed."
+        )
+
+    def insert(self, index, object, /):
+        raise TypeError(
+            "The list underpinning your Deque should be fixed length. "
+            "Calling the insert method is not allowed."
+        )
+
+    def pop(self):
+        raise TypeError(
+            "The list underpinning your Deque should be fixed length. "
+            "Calling the pop method is not allowed."
+        )
+
+    def extend(self, iterable, /):
+        raise TypeError(
+            "The list underpinning your Deque should be fixed length. "
+            "Calling the extend method is not allowed."
+        )
+
+    def remove(self, value, /):
+        raise TypeError(
+            "The list underpinning your Deque should be fixed length. "
+            "Calling the remove method is not allowed."
+        )
+
+
+def monkey_patch(deque):
+    """Patch a Deque so that its underling list is of fixed length."""
+
+    buffer = [a for a in dir(deque) if type(getattr(deque, a)) is list]
+    if not buffer:
+        raise ValueError("Deque has no attribute of type list.")
+
+    for a in buffer:
+        setattr(deque, a, StaticList(getattr(deque, a)))
+
+
 def test_import_deque():
     from adt_examples.deque import Deque
 
@@ -24,6 +69,7 @@ def test_push_pop_available(method):
 
 def test_append_and_pop():
     Q = Deque(1)
+    monkey_patch(Q)
     Q.append(1)
     assert Q.pop() == 1, \
         "popped element in deque"
@@ -31,6 +77,7 @@ def test_append_and_pop():
 
 def test_peek():
     Q = Deque(2)
+    monkey_patch(Q)
     Q.append(1)
     Q.append(2)
     assert Q.peek() == 2, \
@@ -39,6 +86,7 @@ def test_peek():
 
 def test_peekleft():
     Q = Deque(2)
+    monkey_patch(Q)
     Q.append(1)
     Q.append(2)
     assert Q.peekleft() == 1, \
@@ -47,6 +95,7 @@ def test_peekleft():
 
 def test_appendleft():
     Q = Deque(3)
+    monkey_patch(Q)
     Q.append(2)
     Q.append(4)
     Q.appendleft(0)
@@ -56,6 +105,7 @@ def test_appendleft():
 
 def test_popleft():
     Q = Deque(3)
+    monkey_patch(Q)
     Q.append(2)
     Q.append(4)
     Q.append(6)
@@ -70,6 +120,7 @@ def test_popleft():
 ])
 def test_len(items, length):
     Q = Deque(10)
+    monkey_patch(Q)
     for item in items:
         Q.append(item)
     assert len(Q) == length, \
@@ -78,12 +129,14 @@ def test_len(items, length):
 
 def test_len_empty():
     Q = Deque(5)
+    monkey_patch(Q)
     assert not Q
 
 
 @pytest.fixture
 def base_data():
     Q = Deque(5)
+    monkey_patch(Q)
     Q.append(5)
     Q.append(10)
     Q.append(15)
@@ -95,6 +148,7 @@ def base_data():
     Q.append(40)
 
     T = Deque(4)
+    monkey_patch(T)
     T.append('n')
     T.append('n+1')
     T.appendleft('n+2')
@@ -128,9 +182,9 @@ def test_double_iterate(idx, iterated, base_data):
                           [(q, r) for q in iterated for r in iterated])
 
 
-
 def test_mem_leakage():
     Q = Deque(2)
+    monkey_patch(Q)
     Q.append(1)
     A = object()
     ref = []
