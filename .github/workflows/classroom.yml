@@ -81,4 +81,4 @@ jobs:
       name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       with:
-        runners: setup,package-install,exercise-5-4,exercise-5-5,exercise-5-6,flake8-test
+        runners: setup,packageinstall,exercise54,exercise55,exercise56,flake8test
