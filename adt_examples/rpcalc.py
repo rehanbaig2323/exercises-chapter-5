@@ -60,6 +60,6 @@ class RPCalc:
         """Return top element in stack."""
         return self.stack[-1]
 
-    def len(self):
+    def __len__(self):
         """Return length of stack."""
         return len(self.stack)
