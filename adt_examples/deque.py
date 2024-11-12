@@ -20,7 +20,7 @@ class Deque:
         actuals = self.deque[self.lpt:self.rpt]
         self.deque = actuals + [x]
         while len(self.deque) < self.size:
-            self.deque.appendleft(None)
+            self.deque.append(None)
         self.rpt += 1
 
     def appendleft(self, x):
@@ -56,15 +56,3 @@ class Deque:
     def __len__(self):
         """Get the length of the deque."""
         return len(self.deque)
-
-
-e = Deque(4)
-e.append(5)
-e.append(10)
-e.append(15)
-e.append(25)
-e.popleft()
-e.popleft()
-print(e)
-print(e.lpt)
-print(e.rpt)
