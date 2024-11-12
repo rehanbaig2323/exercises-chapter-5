@@ -18,13 +18,13 @@ class Deque:
 
     def append(self, x):
         """Append an item to the end of deque."""
-        actuals = self.deque[self.lpt:self.rpt]
-        self.deque = actuals + [x]
-        while len(self.deque) < self.size:
-            self.deque.append(None)
-        self.rpt += 1
-        if self.rpt > self.size:
-            self.rpt = self.rpt % self.size
+        if self.rpt != self.size:
+            self.deque[self.rpt] = x
+            self.rpt += 1
+        else:
+            insertion = self.deque.index(None)
+            self.deque[insertion] = x
+            self.rpt = insertion + 1
 
     def appendleft(self, x):
         """Append an item to the start of deque."""
