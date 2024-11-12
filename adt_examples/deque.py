@@ -44,7 +44,7 @@ class Deque:
 
     def peek(self):
         """Peek at last item."""
-        return self.deque(self.rpt - 1)
+        return self.deque[self.rpt - 1]
 
     def peekleft(self):
         """Peek at the first item."""
