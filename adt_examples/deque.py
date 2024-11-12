@@ -10,6 +10,7 @@ class Deque:
         self.size = n
         self.lpt = 0
         self.rpt = 0
+        self.current = 0
 
     def __repr__(self):
         """Represent the deque as a string for user."""
@@ -56,3 +57,12 @@ class Deque:
     def __len__(self):
         """Get the length of the deque."""
         return len(self.deque)
+
+    def __iter__(self):
+        """Allow for iteration."""
+        return self
+
+    def __next__(self):
+        """Rules for iteration."""
+        self.current += 1
+        return self.deque[self.current]
