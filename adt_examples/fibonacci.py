@@ -6,7 +6,7 @@ class Fib:
 
     def __init__(self):
         """Initialise the class."""
-        self.a = 0
+        self.a = 1
         self.b = 1
 
     def __iter__(self):
@@ -15,7 +15,6 @@ class Fib:
 
     def __next__(self):
         """Generate the next fibo number."""
-        current = self.a
+        temp = self.b
         self.a, self.b = self.b, self.a + self.b
-        return current
-# hahahah
+        return temp
