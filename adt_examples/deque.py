@@ -69,4 +69,6 @@ class Deque:
     def __next__(self):
         """Rules for iteration."""
         self.current += 1
+        if self.current >= self.size:
+            return StopIteration
         return self.deque[self.current]
