@@ -23,6 +23,8 @@ class Deque:
         while len(self.deque) < self.size:
             self.deque.append(None)
         self.rpt += 1
+        if self.rpt > self.size:
+            self.rpt = self.rpt % self.size
 
     def appendleft(self, x):
         """Append an item to the start of deque."""
@@ -31,6 +33,8 @@ class Deque:
         while len(self.deque) < self.size:
             self.deque.append(None)
         self.rpt += 1
+        if self.rpt > self.size:
+            self.rpt = self.rpt % self.size
 
     def pop(self):
         """Pop the last item in the deque and return it."""
