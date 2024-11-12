@@ -42,6 +42,10 @@ class Deque:
         self.lpt += 1
         return item_to_pop
 
+    def peek(self):
+        """Peek at last item."""
+        return self.deque(self.rpt - 1)
+
     def peekleft(self):
         """Peek at the first item."""
         return self.deque[self.lpt]
