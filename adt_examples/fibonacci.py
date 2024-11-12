@@ -18,3 +18,4 @@ class Fib:
         current = self.a
         self.a, self.b = self.b, self.a + self.b
         return current
+# hahahah
